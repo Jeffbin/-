@@ -22,14 +22,21 @@ def merge(a,b):
 
 
 def mergesort(arr,low,high):
-    if len(arr)==1:
+    if len(arr)<=1:
         return arr
     l=low
     h=high
     mid=(l+h)//2
 
-    larr=mergesort(arr,l,mid)
-    harr=mergesort(arr,mid+1,h)
+    if l==mid:
+        b=arr[l]
+        d=arr[mid+1]
+    else:
+        b=arr[l:mid+1]
+        d=arr[mid+1:h+1]
+
+    larr=mergesort(b,l,mid)
+    harr=mergesort(d,mid+1,h)
     merge(larr,harr)
 
 
