@@ -30,47 +30,66 @@ def mersort(arr):
 
 def merge_ordered_list(left, right):
     global inversion_count
-    res = []
+    res = [0]*(len(left)+len(right))
     lc = rc = 0
+    i=0
     while lc < len(left) and rc < len(right):
         if left[lc] <= right[rc]:
-            res.append(left[lc])
+            res[i]=left[lc]
             lc += 1
+            i=i+1
         else:
-            res.append(right[rc])
+            res[i]=right[rc]
             rc += 1
+            i=i+1
             # 统计逆序对个数
             inversion_count += len(left[lc:])
-    res.extend(left[lc:])
-    res.extend(right[rc:])
+    for i in range(i,len(left)+len(right)):
+        if lc<len(left):
+            res[i]=left[lc]
+            lc=lc+1
+        if rc<len(right):
+            res[i]=right[rc]
+            rc=rc+1
     return res
 
 
+while 1:
+    inversion_count=0
+    n = int(input())
+    arr = [None]*n
+    if n == 0:
+        break
+    for i in range(n):
+        arr[i]=int(input())
+    mersort(arr)
+    print(inversion_count)
 
-
-
-
-
-
-print("输入a的值")
-a=int(input())
-op=0
-
-b=[]
-k=[]
-
-while a!=0 :
-    b=[]
-    inversion_count = 0
-    for i in range(0,a):
-        c=int(input())
-        b.append(c)
-    #op=counts(len(b),b)
-    mersort(b)
-
-    k.append(inversion_count)
-    print("输入a的值")
-    a=int(input())
-    
-for o in range(0,len(k)):
-    print(k[o])
+#
+# import time
+# start=time.time()
+#
+# print("输入a的值")
+# a=int(input())
+# op=0
+#
+# b=[]
+# k=[]
+#
+# while a!=0 :
+#     b=[]
+#     inversion_count = 0
+#     for i in range(0,a):
+#         c=int(input())
+#         b.append(c)
+#     #op=counts(len(b),b)
+#     mersort(b)
+#
+#     k.append(inversion_count)
+#     print("输入a的值")
+#     a=int(input())
+#
+# for o in range(0,len(k)):
+#     print(k[o])
+# end=time.time()
+# print(end)
