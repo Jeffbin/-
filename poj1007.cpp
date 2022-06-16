@@ -4,63 +4,22 @@
 
 using namespace std;
 
-char str[200][200];   //¶şÎ¬Êı×éĞ´Èë×Ö·û´®Ã¿Ò»¸ö×Ö·ûµÄÖµ
-int num[200];     //ÄæĞòÊıµÄÖµ
+char str[200][200];   //äºŒç»´æ•°ç»„å†™å…¥å­—ç¬¦ä¸²æ¯ä¸€ä¸ªå­—ç¬¦çš„å€¼
+int num[200];     //é€†åºæ•°çš„å€¼
 char ls[100];
-int cnt;
-//int merge(int a[], int l, int mid, int r)
-//{
-//	int i = l;
-//	int j = mid + 1;
-//	int k = 0;
-//	while (i <= mid && j <= r)
-//	{
-//		if (a[i] < a[j])
-//		{
-//			ls[k++] = a[i++];
-//		}
-//		else
-//		{
-//			ls[k++] = a[j++];
-//			cnt = mid - i + 1;
-//
-//		}
-//	}
-//	while (i <= mid)
-//	{
-//		ls[k++] = a[i++];
-//	}
-//	while (j <= r)
-//	{
-//		ls[k++] = a[j++];
-//	}
-//	return cnt;
-//}
-//int mergesort(int a[], int l, int r)
-//{
-//	int key = 0;
-//	if (l >= r)
-//	{
-//		return 0;
-//	}
-//	int mid = (l + r) / 2;
-//	mergesort(a, l, mid);
-//	mergesort(a, mid + 1, r);
-//	key=(merge(a, l,mid, r));
-//	return key;
-//}
+
 
 int main()
 {
 	int m, n;
 	
-	cin >> n;//³¤¶È
-	cin >> m;//¸öÊı
+	cin >> n;//é•¿åº¦
+	cin >> m;//ä¸ªæ•°
 
 	
-	for (int i = 1; i <= m; i++)
+	for (int i = 0; i < m; i++)
 	{
-		cin >> str[i];//Ö±½Ó¶¨ÒåµÚ¼¸ĞĞµÄÊı£¬Ö±½ÓÊäÈë¼¸ÁĞµÄ×Ö·û
+		cin >> str[i];//ç›´æ¥å®šä¹‰ç¬¬å‡ è¡Œçš„æ•°ï¼Œç›´æ¥è¾“å…¥å‡ åˆ—çš„å­—ç¬¦
 		cout << "\t" << endl;
 		
 		for (int j = 0; j < n; j++)
@@ -80,9 +39,9 @@ int main()
 	int um;
 	int sz;
 	
-	for (int i = 1; i <=m; i++)
+	for (int i = 0; i <m-1; i++)
 	{
-		for (int j = 1; j <=m - i; j++)
+		for (int j = 0; j <m - i-1; j++)
 		{
 			if (num[j] > num[j + 1])
 			{
@@ -91,12 +50,12 @@ int main()
 				num[j] = um;
 				memcpy(ls, str[j+1], n);
 				memcpy(str[j + 1], str[j], n);
-				memcpy(str[j], ls, n);
+ 				memcpy(str[j], ls, n);
 
 			}
 		}
 	}
-	for (sz = 1; sz <= n; sz++)
+	for (sz = 0; sz < n; sz++)
 	{
 		cout << str[sz];
 		cout << "\t" << endl;
