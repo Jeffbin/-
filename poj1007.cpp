@@ -19,7 +19,7 @@ int main()
 	{
 		cin >> DNA[i];
 		a[i].line = DNA[i];//字符指针也可以指向一个字符串，此时，字符指针指向一个字符串常量的首地址。
-		a[i].num = bubble_sort(DNA[i], n);
+		a[i].num = bubble_sort(DNA[i], n);//计算逆序数
 	}
 	sort(a, a + m, cmp);//对m个a[]里的num排序
 	for (i = 0; i < m; i++)
