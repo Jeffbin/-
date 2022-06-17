@@ -1,67 +1,57 @@
-
 #include <iostream>
-
-
+#include <algorithm>
 using namespace std;
-
-char str[200][200];   //二维数组写入字符串每一个字符的值
-int num[200];     //逆序数的值
-char ls[100];
-
-
-int main()
+struct sortedDNA
 {
-	int m, n;
-	
-	cin >> n;//长度
-	cin >> m;//个数
+	int num;
+	char *line;//指针，a[i]的值赋值到这里
+}a[101];
 
-	
-	for (int i = 0; i < m; i++)
+int bubble_sort(char a[], int n);
+bool cmp(sortedDNA a, sortedDNA b);
+
+int main() 
+{
+	int n, m, i, j;//n为长度，m为个数
+	char DNA[101][52];
+	cin >> n >> m;
+	for (i = 0; i < m; i++)
 	{
-		cin >> str[i];//直接定义第几行的数，直接输入几列的字符
-		cout << "\t" << endl;
-		
-		for (int j = 0; j < n; j++)
-		{
-			for (int k = j + 1; k < n; k++)
-			{
-				if (str[i][j] > str[i][k])
-				{
-					num[i]++;
-				}
-			}
-		}
-
+		cin >> DNA[i];
+		a[i].line = DNA[i];//字符指针也可以指向一个字符串，此时，字符指针指向一个字符串常量的首地址。
+		a[i].num = bubble_sort(DNA[i], n);
 	}
-	
-	
-	int um;
-	int sz;
-	
-	for (int i = 0; i <m-1; i++)
+	sort(a, a + m, cmp);//对m个a[]里的num排序
+	for (i = 0; i < m; i++)
 	{
-		for (int j = 0; j <m - i-1; j++)
+		for (j = 0; j < n; j++)
 		{
-			if (num[j] > num[j + 1])
-			{
-				um = num[j + 1];
-				num[j + 1] = num[j];
-				num[j] = um;
-				memcpy(ls, str[j+1], n);
-				memcpy(str[j + 1], str[j], n);
- 				memcpy(str[j], ls, n);
-
-			}
+			cout << a[i].line[j];//输出
 		}
-	}
-	for (sz = 0; sz < n; sz++)
-	{
-		cout << str[sz];
-		cout << "\t" << endl;
+		cout << "\n";
+
 	}
 	return 0;
+}
+bool cmp(sortedDNA a, sortedDNA b)
+{
+	return a.num < b.num;
 
+}
+int bubble_sort(char a[], int n)
+{
+	int i, j, num = 0;
+	for (i = 0; i < n - 1; i++)
+	{
+		for (j = i + 1; j < n; j++)
+		{
+			if (a[i] > a[j])
+			{
+				num++;
+			}
+		}
+	}
+	return num;
 }
 /*
 10 6
@@ -71,5 +61,4 @@ TTTGGCCAAA
 GATCAGATTT
 CCCGGGGGGA
 ATCGATGCAT
- 
 */
