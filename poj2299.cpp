@@ -1,8 +1,38 @@
+
+/*
+ * 问题描述：确定 Ultra-QuickSort 需要执行多少交换操作才能对给定的输入序列进行排序。用一个排序算法确定
+ *
+ * 提交状态： AC
+ *
+ * AC 结果： Memory: 7240K Time: 1438MS
+ *
+ * 解题方法1：用归并排序把输入排序，当右边序列小于左边的第i位时，说明mid-i+1位将成为他的逆序数，用cnt+=mid-i+1来计算逆序数
+ * 
+ *
+ * 解题方法2 （可选）：
+ *
+ * 出错次数：3
+ *
+ * 错误原因 （可选）：运行时发生错误，原因是数组不够大
+ *
+ * 心得体会 （可选）：尽量少用全局变量
+ */
+
+
+
+
+
+
+
+
+
+
+
 #include <iostream>
 using namespace std;
 #define ll long long
-ll n,i,j,k,ls[10000],cnt;
-ll b[10000];
+ll n,i,j,k,ls[500000],cnt;
+ll b[500000];
 
 	
 
@@ -61,7 +91,7 @@ int main()
 		}
 		mergesort(b, 0, n - 1);
 		cout << cnt;
-		
+		cout << "\n";
 		cin >> n;
 	}
 }
