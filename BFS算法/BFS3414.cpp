@@ -1,30 +1,30 @@
 /*
-* ÎÊÌâÃèÊö£º
+* é—®é¢˜æè¿°ï¼š
 
-Äã»áµÃµ½Á½¸ö¹ø£¬·Ö±ð¾ßÓÐAºÍBÉýµÄÌå»ý¡£¿ÉÒÔÖ´ÐÐÒÔÏÂ²Ù×÷£º
+ä½ ä¼šå¾—åˆ°ä¸¤ä¸ªé”…ï¼Œåˆ†åˆ«å…·æœ‰Aå’ŒBå‡çš„ä½“ç§¯ã€‚å¯ä»¥æ‰§è¡Œä»¥ä¸‹æ“ä½œï¼š
 
-FILL£¨i£© ´ÓË®ÁúÍ·Ìî³ä¹ø i £¨1 ¡Ü i ¡Ü 2£©;
-DROP£¨i£© ½«¹ø i Çå¿ÕÖÁÏÂË®µÀ;
-POUR£¨i£¬j£© ´Ó¹ø i µ¹µ½¹ø j;ÔÚ´Ë²Ù×÷Ö®ºó£¬ÒªÃ´¹øjÒÑÂú£¨²¢ÇÒ¹øiÖÐ¿ÉÄÜ»¹Ê£ÏÂÒ»Ð©Ë®£©£¬ÒªÃ´¹øiÊÇ¿ÕµÄ£¨²¢ÇÒÆäËùÓÐÄÚÈÝÎï¶¼ÒÑÒÆÖÁ¹øj£©¡£
-±àÐ´Ò»¸ö³ÌÐòÒÔÕÒµ½ÕâÐ©²Ù×÷µÄ×î¶ÌÐòÁÐ£¬ÕâÐ©²Ù×÷½«ÔÚÆäÖÐÒ»¸ö¹ÞÖÐ²úÉúÇ¡ºÃCÉýµÄË®¡£
+FILLï¼ˆiï¼‰ ä»Žæ°´é¾™å¤´å¡«å……é”… i ï¼ˆ1 â‰¤ i â‰¤ 2ï¼‰;
+DROPï¼ˆiï¼‰ å°†é”… i æ¸…ç©ºè‡³ä¸‹æ°´é“;
+POURï¼ˆiï¼Œjï¼‰ ä»Žé”… i å€’åˆ°é”… j;åœ¨æ­¤æ“ä½œä¹‹åŽï¼Œè¦ä¹ˆé”…jå·²æ»¡ï¼ˆå¹¶ä¸”é”…iä¸­å¯èƒ½è¿˜å‰©ä¸‹ä¸€äº›æ°´ï¼‰ï¼Œè¦ä¹ˆé”…iæ˜¯ç©ºçš„ï¼ˆå¹¶ä¸”å…¶æ‰€æœ‰å†…å®¹ç‰©éƒ½å·²ç§»è‡³é”…jï¼‰ã€‚
+ç¼–å†™ä¸€ä¸ªç¨‹åºä»¥æ‰¾åˆ°è¿™äº›æ“ä½œçš„æœ€çŸ­åºåˆ—ï¼Œè¿™äº›æ“ä½œå°†åœ¨å…¶ä¸­ä¸€ä¸ªç½ä¸­äº§ç”Ÿæ°å¥½Cå‡çš„æ°´ã€‚
 
 
 
-* Ìá½»×´Ì¬£º AC
+* æäº¤çŠ¶æ€ï¼š AC
  *
-* ½»Á÷½á¹û£º ÄÚ´æ£º Ê±¼ä£º
+* äº¤æµç»“æžœï¼š å†…å­˜ï¼š444K æ—¶é—´ï¼š16MS
  *
-* ½âÌâ·½·¨1£ºÉèÒ»¸ö½á¹¹Ìå£¬ÀïÃæÓÐaÍ°µÄµ±Ç°Ë®ÈÝÁ¿ALºÍbÍ°µ±Ç°Ë®ÈÝÁ¿BL£¬·ÑÓÃ£¬ÕûÐÍÊý×é£¬È»ºó´ÓÆðµã¿ªÊ¼FILL£¨A£©£¬FILL£¨B£©£¬DROP£¨A£©£¬DROP£¨B£©£¬pour(a,b)
-* pour(b,a)Ã¿ÖÖÇé¿ö¶¼±éÀúÒ»±é£¬Èë¶Ó£¬Ö±µ½Êä³ö½á¹û»òº¯Êý½áÊøÊä³ö IMPOSSIBEL¡£
-* ¼ôÖ¦£ºË®¿Õ²»ÓÃµ¹Ë®£»Ë®Âú²»ÓÃ×°Ë®£»Ë®¿Õ²»ÓÃ°ÑË®µ¹½øÁíÒ»¸öÍ°£»ÒÑ¾­±éÀú¹ýµÄµã²»ÓÃÖØ¸´±éÀú¡£
+* è§£é¢˜æ–¹æ³•1ï¼šè®¾ä¸€ä¸ªç»“æž„ä½“ï¼Œé‡Œé¢æœ‰aæ¡¶çš„å½“å‰æ°´å®¹é‡ALå’Œbæ¡¶å½“å‰æ°´å®¹é‡BLï¼Œè´¹ç”¨ï¼Œæ•´åž‹æ•°ç»„ï¼Œç„¶åŽä»Žèµ·ç‚¹å¼€å§‹FILLï¼ˆAï¼‰ï¼ŒFILLï¼ˆBï¼‰ï¼ŒDROPï¼ˆAï¼‰ï¼ŒDROPï¼ˆBï¼‰ï¼Œpour(a,b)
+* pour(b,a)æ¯ç§æƒ…å†µéƒ½éåŽ†ä¸€éï¼Œå…¥é˜Ÿï¼Œç›´åˆ°è¾“å‡ºç»“æžœæˆ–å‡½æ•°ç»“æŸè¾“å‡º IMPOSSIBELã€‚
+* å‰ªæžï¼šæ°´ç©ºä¸ç”¨å€’æ°´ï¼›æ°´æ»¡ä¸ç”¨è£…æ°´ï¼›æ°´ç©ºä¸ç”¨æŠŠæ°´å€’è¿›å¦ä¸€ä¸ªæ¡¶ï¼›å·²ç»éåŽ†è¿‡çš„ç‚¹ä¸ç”¨é‡å¤éåŽ†ã€‚
  *
-* ½âÌâ·½·¨2 £¨¿ÉÑ¡£©£º
+* è§£é¢˜æ–¹æ³•2 ï¼ˆå¯é€‰ï¼‰ï¼š
  *
-* ³ö´í´ÎÊý£º1
+* å‡ºé”™æ¬¡æ•°ï¼š1
  *
-* ´íÎóÔ­Òò £¨¿ÉÑ¡£©£º±¬ÄÚ´æ£¬Ã»ÓÐ¼ôÖ¦µ¼ÖÂÖØ¸´±éÀúÍ¬Ò»¸öµã£¬ËùÓÐµÄÁ÷³ÌÓÖ×ßÒ»±é
+* é”™è¯¯åŽŸå›  ï¼ˆå¯é€‰ï¼‰ï¼šçˆ†å†…å­˜ï¼Œæ²¡æœ‰å‰ªæžå¯¼è‡´é‡å¤éåŽ†åŒä¸€ä¸ªç‚¹ï¼Œæ‰€æœ‰çš„æµç¨‹åˆèµ°ä¸€é
  *
-* ÐÄµÃÌå»á £¨¿ÉÑ¡£©£ºÑ¡ÔñÊä³ö×Ö·û´®Ê±£¬ÉèÒ»¸ö¶þÎ¬×Ö·ûÊý×é£¬¿ÉÒÔ¸ø¶¨Ò»¸öÕûÐÍÊý×éÀ´Ñ¡¶¨Êä³öÄÇ¶Î×Ö·û´®
+* å¿ƒå¾—ä½“ä¼š ï¼ˆå¯é€‰ï¼‰ï¼šé€‰æ‹©è¾“å‡ºå­—ç¬¦ä¸²æ—¶ï¼Œè®¾ä¸€ä¸ªäºŒç»´å­—ç¬¦æ•°ç»„ï¼Œå¯ä»¥ç»™å®šä¸€ä¸ªæ•´åž‹æ•°ç»„æ¥é€‰å®šè¾“å‡ºé‚£æ®µå­—ç¬¦ä¸²
  */
 
 
@@ -78,7 +78,7 @@ void BFS(int z,int x,int c)
 			}
 			return;
 		}
-		//×¢ÂúA
+		//æ³¨æ»¡A
 			
 				point temp;
 				temp = r.front();
@@ -93,7 +93,7 @@ void BFS(int z,int x,int c)
 						used[temp.AL][temp.BL] = 1;
 					}
 				}
-			//×¢Âúb
+			//æ³¨æ»¡b
 			
 				//point temp;
 				temp = r.front();
@@ -108,11 +108,11 @@ void BFS(int z,int x,int c)
 						used[temp.AL][temp.BL] = 1;
 					}
 				}
-			//µ¹µôa
+			//å€’æŽ‰a
 			
 				//point temp;
 				temp = r.front();
-				if (temp.AL != 0)//¼ôÖ¦
+				if (temp.AL != 0)//å‰ªæž
 				{
 					temp.AL = 0;
 					temp.cost++;
@@ -126,9 +126,9 @@ void BFS(int z,int x,int c)
 			
 				
 				
-				//µ¹µôb
+				//å€’æŽ‰b
 				temp = r.front();
-				if (temp.BL != 0)//¼ôÖ¦
+				if (temp.BL != 0)//å‰ªæž
 				{
 					temp.BL = 0;
 					temp.cost++;
@@ -142,15 +142,15 @@ void BFS(int z,int x,int c)
 
 
 			
-				//°Ñaµ¹µ½b
+				//æŠŠaå€’åˆ°b
 				temp = r.front();
-				if (temp.AL != 0)//¼ôÖ¦
+				if (temp.AL != 0)//å‰ªæž
 				{
-					if (temp.BL < x)//Ã»ÓÐÂú
+					if (temp.BL < x)//æ²¡æœ‰æ»¡
 					{
 						temp.BL = temp.BL + temp.AL;
 						temp.AL = 0;
-						if (temp.BL > x)//³¬¹ýÁË
+						if (temp.BL > x)//è¶…è¿‡äº†
 						{
 							
 							temp.AL = temp.BL - x;
@@ -166,15 +166,15 @@ void BFS(int z,int x,int c)
 					}
 				}
 			
-				//°Ñbµ¹µ½a
+				//æŠŠbå€’åˆ°a
 				temp = r.front();
-				if (temp.BL != 0)//¼ôÖ¦
+				if (temp.BL != 0)//å‰ªæž
 				{
-					if (temp.AL < z)//Ã»ÓÐÂú
+					if (temp.AL < z)//æ²¡æœ‰æ»¡
 					{
 						temp.AL = temp.AL + temp.BL;
 						temp.BL = 0;
-						if (temp.AL > z)//³¬¹ýÁË
+						if (temp.AL > z)//è¶…è¿‡äº†
 						{
  							
 							temp.BL = temp.AL - z;
@@ -205,10 +205,10 @@ int main()
 	return 0;
 }
 /*
-Ê¾ÀýÊäÈë
+ç¤ºä¾‹è¾“å…¥
 
 3 5 4
-Ê¾ÀýÊä³ö
+ç¤ºä¾‹è¾“å‡º
 
 6
 FILL(2)
