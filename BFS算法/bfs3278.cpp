@@ -2,7 +2,7 @@
  * 问题描述：给出两个点X，N，和三种移动方法，分别为x+1,x-1,x*2，每次移动花费1分钟，用这三种移动方法使X点到N点的花费最少
  * 提交状态：  AC
  *
- * AC 结果： MEMORY: TIME:
+ * AC 结果： MEMORY:2008K TIME:219ms
  *
  * 解题方法1：设立一个点的结构体，里面有坐标和花费时间，将起点入队，再分别把其他点移动入队，再把已扩展完的第一个点出队，直到队列为空或者X到达N点
  *
@@ -23,15 +23,18 @@ using namespace std;
 
 int flag = 0;
 int au[] = {1,-1,0};
+
+int used[202000];
 struct point
 {
 	int x;
 	int minute;
 };
-queue<point> r;
+
 
 void BFS(int manstartx,int cowstartx)
 {
+	queue<point> r;
 	point start;
 	start.x = manstartx;
 	start.minute = 0;
@@ -49,7 +52,7 @@ void BFS(int manstartx,int cowstartx)
 		{
 			int tx;
 			tx = x + au[i];
-			if (i == 2)
+			if (i == 2&&tx<cowstartx)
 			{
 				tx = tx * 2;
 			}
@@ -57,10 +60,15 @@ void BFS(int manstartx,int cowstartx)
 			{
 				continue;
 			}
+	
 			point temp;
 			temp.x = tx;
 			temp.minute = r.front().minute + 1;
-			r.push(temp);
+			if (used[tx] == 0)
+			{
+				used[tx] = 1;
+				r.push(temp);
+			}
 		}
 		r.pop();//队首出列;
 	}
@@ -71,6 +79,7 @@ void BFS(int manstartx,int cowstartx)
 int main()
 {
 	int N, K;
+	memset(used, 0, sizeof(used));
 	cin >> N>> K;
 	BFS(N, K);
 }
